@@ -8,7 +8,7 @@ const { title, description = 'Arxo examples and reports' } = Astro.props;
 const base = import.meta.env.BASE_URL;
 ---
 <!doctype html>
-<html lang="en" class="scroll-smooth overflow-x-hidden text-[16px]">
+<html lang="en" class="scroll-smooth overflow-x-hidden text-[16px]" suppressHydrationWarning>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -18,43 +18,89 @@ const base = import.meta.env.BASE_URL;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <meta name="color-scheme" content="light dark" />
+    <script is:inline>
+      (function() {
+        var stored = localStorage.getItem('theme');
+        var dark = stored === 'dark';
+        var root = document.documentElement;
+        function apply(d) {
+          root.classList.toggle('dark', d);
+          root.setAttribute('data-theme', d ? 'dark' : 'light');
+          root.style.colorScheme = d ? 'dark' : 'light';
+        }
+        apply(dark);
+      })();
+    </script>
   </head>
-  <body class="flex min-h-screen flex-col overflow-x-hidden bg-slate-50 font-sans text-slate-900 antialiased selection:bg-slate-200 selection:text-slate-900">
-    <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/95 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/80">
+  <body class="flex min-h-screen flex-col overflow-x-hidden bg-slate-50 font-sans text-slate-900 antialiased selection:bg-slate-200 selection:text-slate-900 dark:bg-slate-900 dark:text-slate-100 dark:selection:bg-slate-700 dark:selection:text-slate-100">
+    <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/95 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/80 dark:border-slate-700 dark:bg-slate-900/95 dark:supports-[backdrop-filter]:bg-slate-900/80">
       <nav class="mx-auto flex max-w-4xl flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:px-6">
-        <a href={base} class="flex items-center gap-2 text-lg font-semibold text-slate-900 no-underline transition hover:text-slate-600 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 rounded-md -m-1 p-1">
+        <a href={base} class="flex items-center gap-2 text-lg font-semibold text-slate-900 no-underline transition hover:text-slate-600 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 rounded-md -m-1 p-1 dark:text-slate-100 dark:hover:text-slate-300 dark:focus:ring-slate-500 dark:focus:ring-offset-slate-900">
           <img src="/logo.png" alt="" class="h-8 w-8 rounded-full" width="32" height="32" />
           Arxo Examples
         </a>
-        <div class="flex flex-wrap gap-1 -mx-1">
-          <a href={`${base}reports/`} class="rounded-md px-3 py-2 text-sm font-medium text-slate-600 no-underline transition hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
+        <div class="flex flex-wrap items-center gap-1 -mx-1">
+          <a href={`${base}reports/`} class="rounded-md px-3 py-2 text-sm font-medium text-slate-600 no-underline transition hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-slate-100 dark:focus:ring-slate-500 dark:focus:ring-offset-slate-900">
             Reports
           </a>
-          <a href={`${base}mcp/`} class="rounded-md px-3 py-2 text-sm font-medium text-slate-600 no-underline transition hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
+          <a href={`${base}mcp/`} class="rounded-md px-3 py-2 text-sm font-medium text-slate-600 no-underline transition hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-slate-100 dark:focus:ring-slate-500 dark:focus:ring-offset-slate-900">
             MCP Examples
           </a>
-          <a href={`${base}samples/`} class="rounded-md px-3 py-2 text-sm font-medium text-slate-600 no-underline transition hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
+          <a href={`${base}samples/`} class="rounded-md px-3 py-2 text-sm font-medium text-slate-600 no-underline transition hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-slate-100 dark:focus:ring-slate-500 dark:focus:ring-offset-slate-900">
             Samples
           </a>
+          <button type="button" id="theme-toggle" aria-label="Toggle dark mode" class="rounded-md p-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100 dark:focus:ring-slate-500 dark:focus:ring-offset-slate-900">
+            <span class="dark:hidden" aria-hidden="true">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+            </span>
+            <span class="hidden dark:inline" aria-hidden="true">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+            </span>
+          </button>
         </div>
       </nav>
     </header>
     <main class="mx-auto w-full max-w-4xl flex-1 px-4 py-8 sm:px-6 sm:py-10" style="min-width: 0;">
       <slot />
     </main>
-    <footer class="mt-auto border-t border-slate-200 bg-white">
+    <footer class="mt-auto border-t border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900">
       <div class="mx-auto max-w-4xl px-4 py-6 sm:px-6">
-        <p class="text-sm text-slate-500">
+        <p class="text-sm text-slate-500 dark:text-slate-400">
           Branch in this repo = Arxo version.
-          <a href="https://github.com/arxohq/arxo" class="rounded text-slate-700 underline decoration-slate-300 underline-offset-2 transition hover:decoration-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
+          <a href="https://github.com/arxohq/arxo" class="rounded text-slate-700 underline decoration-slate-300 underline-offset-2 transition hover:decoration-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 dark:text-slate-300 dark:decoration-slate-600 dark:hover:decoration-slate-400 dark:focus:ring-slate-500 dark:focus:ring-offset-slate-900">
             Arxo
           </a>
           <span class="mx-2" aria-hidden="true">·</span>
-          <a href="https://docs.arxo.io" class="rounded text-slate-700 underline decoration-slate-300 underline-offset-2 transition hover:decoration-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
+          <a href="https://docs.arxo.io" class="rounded text-slate-700 underline decoration-slate-300 underline-offset-2 transition hover:decoration-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 dark:text-slate-300 dark:decoration-slate-600 dark:hover:decoration-slate-400 dark:focus:ring-slate-500 dark:focus:ring-offset-slate-900">
             Docs
           </a>
         </p>
       </div>
     </footer>
+    <script is:inline>
+      (function() {
+        var root = document.documentElement;
+        function applyTheme(theme) {
+          var dark = theme === 'dark';
+          root.classList.toggle('dark', dark);
+          root.setAttribute('data-theme', dark ? 'dark' : 'light');
+          root.style.colorScheme = dark ? 'dark' : 'light';
+          root.style.backgroundColor = dark ? '#0f172a' : '#f8fafc';
+          root.style.color = dark ? '#f1f5f9' : '#0f172a';
+          localStorage.setItem('theme', theme);
+        }
+        function onToggle() {
+          var isDark = root.classList.contains('dark');
+          applyTheme(isDark ? 'light' : 'dark');
+        }
+        var btn = document.getElementById('theme-toggle');
+        if (btn) btn.addEventListener('click', onToggle);
+        document.addEventListener('astro:after-swap', function() {
+          var t = localStorage.getItem('theme');
+          applyTheme(t === 'dark' ? 'dark' : 'light');
+        });
+      })();
+    </script>
   </body>
 </html>

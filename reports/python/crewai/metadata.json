@@ -1,0 +1,8 @@
+{
+  "name": "crewai",
+  "url": "https://github.com/joaomdmoura/crewai",
+  "language": "python",
+  "arxo_version": "0.1.0-beta.1",
+  "generated_at": "2026-02-25T08:38:20Z",
+  "metrics": ["scc", "agent_architecture"]
+}

@@ -5,16 +5,38 @@
   "languages": [
     {
       "id": "typescript",
-      "repos": ["express", "react", "webpack"]
+      "repos": [
+        "express",
+        "langchainjs",
+        "react",
+        "webpack"
+      ]
     },
     {
       "id": "python",
-      "repos": ["fastapi"]
+      "repos": [
+        "crewai",
+        "fastapi"
+      ]
     }
   ],
   "mcp_examples": [
-    { "language": "typescript", "repo": "express", "tools": ["analyze_architecture", "check_cycles"] },
-    { "language": "python", "repo": "fastapi", "tools": ["analyze_architecture", "check_cycles"] }
+    {
+      "language": "typescript",
+      "repo": "express",
+      "tools": [
+        "analyze_architecture",
+        "check_cycles"
+      ]
+    },
+    {
+      "language": "python",
+      "repo": "fastapi",
+      "tools": [
+        "analyze_architecture",
+        "check_cycles"
+      ]
+    }
   ],
   "openclaw_sample": "samples/openclaw/minimal-sample"
 }

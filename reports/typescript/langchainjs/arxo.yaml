@@ -1,0 +1,19 @@
+# Config for langchain-ai/langchainjs (SCC + agent_architecture). Use: arxo analyze --path <clone> --config this file.
+data:
+  language: auto
+  import_graph:
+    group_by: file
+    exclude:
+      - node_modules
+      - .yarn
+      - dist
+      - build
+      - "*.test.ts"
+      - "*.spec.ts"
+      - __tests__
+      - coverage
+      - .github
+
+metrics:
+  - id: scc
+  - id: agent_architecture

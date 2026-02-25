@@ -16,21 +16,21 @@ const base = import.meta.env.BASE_URL;
 <Layout title="MCP Examples" description="Arxo MCP tool request/response examples.">
   <div class="space-y-8">
     <div>
-      <h1 class="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">MCP Examples</h1>
-      <p class="mt-2 text-slate-600">Human-readable summaries and optional JSON (request + response) per tool.</p>
+      <h1 class="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl dark:text-slate-100">MCP Examples</h1>
+      <p class="mt-2 text-slate-600 dark:text-slate-300">Human-readable summaries and optional JSON (request + response) per tool.</p>
     </div>
 
-    <ul class="divide-y divide-slate-200 rounded-xl border border-slate-200 bg-white shadow-sm">
+    <ul class="divide-y divide-slate-200 rounded-xl border border-slate-200 bg-white shadow-sm dark:divide-slate-700 dark:border-slate-700 dark:bg-slate-800">
       {manifest.mcp_examples?.map((ex) => (
-        <li class="flex flex-col gap-3 px-6 py-4 transition hover:bg-slate-50 sm:flex-row sm:items-center sm:justify-between">
+        <li class="flex flex-col gap-3 px-6 py-4 transition hover:bg-slate-50 dark:hover:bg-slate-700/50 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <span class="font-mono text-sm text-slate-500">{ex.language}</span>
-            <span class="mx-2 text-slate-400">/</span>
-            <span class="font-semibold text-slate-900">{ex.repo}</span>
+            <span class="font-mono text-sm text-slate-500 dark:text-slate-400">{ex.language}</span>
+            <span class="mx-2 text-slate-400 dark:text-slate-500">/</span>
+            <span class="font-semibold text-slate-900 dark:text-slate-100">{ex.repo}</span>
           </div>
           <div class="flex flex-wrap gap-2">
             {ex.tools.map((t) => (
-              <a href={`${base}mcp/${ex.language}/${ex.repo}/${t}/`} class="rounded-md bg-slate-100 px-3 py-1.5 text-sm font-medium text-slate-700 no-underline transition hover:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
+              <a href={`${base}mcp/${ex.language}/${ex.repo}/${t}/`} class="rounded-md bg-slate-100 px-3 py-1.5 text-sm font-medium text-slate-700 no-underline transition hover:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 dark:bg-slate-700 dark:text-slate-200 dark:hover:bg-slate-600 dark:focus:ring-slate-500 dark:focus:ring-offset-slate-900">
                 {t}
               </a>
             ))}
@@ -39,8 +39,8 @@ const base = import.meta.env.BASE_URL;
       ))}
     </ul>
 
-    <p class="text-sm text-slate-500">
-      Files live under <code class="rounded bg-slate-100 px-1.5 py-0.5 font-mono">mcp/&lt;language&gt;/&lt;repo&gt;/</code> (e.g. analyze_architecture.md, check_cycles.md).
+    <p class="text-sm text-slate-500 dark:text-slate-400">
+      Files live under <code class="rounded bg-slate-100 px-1.5 py-0.5 font-mono dark:bg-slate-700 dark:text-slate-200">mcp/&lt;language&gt;/&lt;repo&gt;/</code> (e.g. analyze_architecture.md, check_cycles.md).
     </p>
   </div>
 </Layout>

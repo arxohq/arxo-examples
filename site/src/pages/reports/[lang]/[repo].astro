@@ -37,54 +37,54 @@ const base = import.meta.env.BASE_URL;
 <Layout title={`${repo} (${lang})`} description={`Arxo report for ${repo}`}>
   <div class="space-y-8">
     <div>
-      <a href={`${base}reports/`} class="mb-4 inline-flex items-center text-sm font-medium text-slate-600 no-underline transition hover:text-slate-900">
+      <a href={`${base}reports/`} class="mb-4 inline-flex items-center text-sm font-medium text-slate-600 no-underline transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-slate-100">
         <svg class="mr-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
         All reports
       </a>
-      <h1 class="text-3xl font-bold tracking-tight text-slate-900">{repo}</h1>
-      <p class="mt-1 font-mono text-sm text-slate-500">{lang}</p>
+      <h1 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100">{repo}</h1>
+      <p class="mt-1 font-mono text-sm text-slate-500 dark:text-slate-400">{lang}</p>
     </div>
 
-    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-      <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500">Metadata</h2>
+    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+      <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Metadata</h2>
       <dl class="mt-4 space-y-3">
         {metadata.name && (
           <div>
-            <dt class="text-sm font-medium text-slate-500">Repo</dt>
-            <dd class="mt-0.5">{metadata.url ? <a href={String(metadata.url)} class="font-medium text-slate-900 underline decoration-slate-300 underline-offset-2 hover:decoration-slate-500">{String(metadata.name)}</a> : <span class="font-medium text-slate-900">{String(metadata.name)}</span>}</dd>
+            <dt class="text-sm font-medium text-slate-500 dark:text-slate-400">Repo</dt>
+            <dd class="mt-0.5">{metadata.url ? <a href={String(metadata.url)} class="font-medium text-slate-900 underline decoration-slate-300 underline-offset-2 hover:decoration-slate-500 dark:text-slate-100 dark:decoration-slate-600 dark:hover:decoration-slate-400">{String(metadata.name)}</a> : <span class="font-medium text-slate-900 dark:text-slate-100">{String(metadata.name)}</span>}</dd>
           </div>
         )}
         {metadata.arxo_version && (
           <div>
-            <dt class="text-sm font-medium text-slate-500">Arxo version</dt>
-            <dd class="mt-0.5 font-mono text-slate-900">{String(metadata.arxo_version)}</dd>
+            <dt class="text-sm font-medium text-slate-500 dark:text-slate-400">Arxo version</dt>
+            <dd class="mt-0.5 font-mono text-slate-900 dark:text-slate-100">{String(metadata.arxo_version)}</dd>
           </div>
         )}
         {metadata.generated_at && (
           <div>
-            <dt class="text-sm font-medium text-slate-500">Generated</dt>
-            <dd class="mt-0.5 text-slate-900">{String(metadata.generated_at)}</dd>
+            <dt class="text-sm font-medium text-slate-500 dark:text-slate-400">Generated</dt>
+            <dd class="mt-0.5 text-slate-900 dark:text-slate-100">{String(metadata.generated_at)}</dd>
           </div>
         )}
       </dl>
     </div>
 
-    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800">
       {hasHtml ? (
-        <a href={`${base}reports/${lang}/${repo}/report.html`} class="inline-flex items-center rounded-lg bg-emerald-600 px-4 py-2.5 font-semibold text-white no-underline transition hover:bg-emerald-700">
+        <a href={`${base}reports/${lang}/${repo}/report.html`} class="inline-flex items-center rounded-lg bg-emerald-600 px-4 py-2.5 font-semibold text-white no-underline transition hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600">
           Open HTML report
           <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
         </a>
       ) : (
-        <p class="text-slate-600">No report.html yet. Add one to <code class="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-sm">reports/{lang}/{repo}/</code>.</p>
+        <p class="text-slate-600 dark:text-slate-300">No report.html yet. Add one to <code class="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-sm dark:bg-slate-700 dark:text-slate-200">reports/{lang}/{repo}/</code>.</p>
       )}
       <p class="mt-4 flex flex-wrap gap-4">
         {hasArxoYaml && (
-          <a href={`${base}reports/${lang}/${repo}/arxo.yaml`} class="inline-flex items-center text-sm font-medium text-amber-700 underline decoration-amber-200 underline-offset-2 hover:decoration-amber-400" title="Config with exclusions used to generate this report">
+          <a href={`${base}reports/${lang}/${repo}/arxo.yaml`} class="inline-flex items-center text-sm font-medium text-amber-700 underline decoration-amber-200 underline-offset-2 hover:decoration-amber-400 dark:text-amber-300 dark:decoration-amber-600 dark:hover:decoration-amber-400" title="Config with exclusions used to generate this report">
             arxo.yaml
           </a>
         )}
-        <a href={`${base}reports/${lang}/${repo}/metadata.json`} class="text-sm font-medium text-slate-600 underline decoration-slate-300 underline-offset-2 hover:decoration-slate-500">metadata.json</a>
+        <a href={`${base}reports/${lang}/${repo}/metadata.json`} class="text-sm font-medium text-slate-600 underline decoration-slate-300 underline-offset-2 hover:decoration-slate-500 dark:text-slate-300 dark:decoration-slate-600 dark:hover:decoration-slate-400">metadata.json</a>
       </p>
     </div>
   </div>

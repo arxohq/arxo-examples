@@ -2,12 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Explicit colors so browser dark-mode defaults cannot override (Stack Overflow) */
+:root {
+  color-scheme: light;
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+html.dark {
+  color-scheme: dark;
+  background-color: #0f172a;
+  color: #f1f5f9;
+}
+
 @layer base {
   /* Improve focus visibility for keyboard nav; hide on mouse/touch */
   *:focus {
     @apply outline-none;
   }
   *:focus-visible {
-    @apply outline-none ring-2 ring-slate-400 ring-offset-2;
+    @apply outline-none ring-2 ring-slate-400 ring-offset-2 dark:ring-slate-500 dark:ring-offset-slate-900;
   }
 }
