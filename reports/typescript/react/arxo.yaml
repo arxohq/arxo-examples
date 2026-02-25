@@ -1,0 +1,16 @@
+# Config for react (SCC report). Use: arxo analyze --path <clone> --config this file.
+data:
+  language: auto
+  import_graph:
+    group_by: file
+    exclude:
+      - node_modules
+      - __tests__
+      - "*.spec.ts"
+      - "*.test.ts"
+      - dist
+      - build
+      - scripts
+
+metrics:
+  - id: scc

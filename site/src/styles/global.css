@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Improve focus visibility for keyboard nav; hide on mouse/touch */
+  *:focus {
+    @apply outline-none;
+  }
+  *:focus-visible {
+    @apply outline-none ring-2 ring-slate-400 ring-offset-2;
+  }
+}

@@ -1,0 +1,17 @@
+# Config for webpack (SCC report). Use: arxo analyze --path <clone> --config this file.
+data:
+  language: auto
+  import_graph:
+    group_by: file
+    exclude:
+      - node_modules
+      - .yarn
+      - dist
+      - build
+      - test
+      - examples
+      - hot
+      - .github
+
+metrics:
+  - id: scc

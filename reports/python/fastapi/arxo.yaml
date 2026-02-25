@@ -1,0 +1,16 @@
+# Config for fastapi (SCC report). Use: arxo analyze --path <clone> --config this file.
+data:
+  language: auto
+  import_graph:
+    group_by: file
+    exclude:
+      - __pycache__
+      - .venv
+      - venv
+      - .pytest_cache
+      - node_modules
+      - .mypy_cache
+      - .ruff_cache
+
+metrics:
+  - id: scc

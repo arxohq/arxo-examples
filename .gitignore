@@ -1,0 +1,22 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Optional: large generated artifacts (uncomment if you don't want to commit big reports)
+# reports/**/report.html
+# reports/**/report.json
+
+# Astro site
+site/node_modules/
+site/dist/
+site/public/reports/
+site/public/mcp/
+site/public/samples/
+site/public/manifest.json

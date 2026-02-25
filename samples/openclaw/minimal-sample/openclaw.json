@@ -1,0 +1,9 @@
+{
+  "gateway": {
+    "host": "0.0.0.0",
+    "remote": true
+  },
+  "controlUI": {
+    "enabled": true
+  }
+}

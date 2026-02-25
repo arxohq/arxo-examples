@@ -1,0 +1,18 @@
+{
+  "tool": "analyze_architecture",
+  "request": {
+    "project_path": ".",
+    "preset": "ai"
+  },
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Placeholder: paste or generate the actual MCP response here. Structure: results[], violations[], violations_count, ui_schemas. Each result has id, version, data (key/value pairs), findings (rule_id, severity, evidence, recommendation)."
+      }
+    ],
+    "isError": false
+  },
+  "arxo_version": "0.1.0-beta.1",
+  "note": "Replace the response content with a real capture from Arxo MCP for this repo and version."
+}

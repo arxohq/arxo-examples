@@ -1,0 +1,20 @@
+{
+  "arxo_version": "0.1.0-beta.1",
+  "description": "Index for Arxo examples and reports. Branch name in this repo should match arxo_version.",
+  "generated_at": null,
+  "languages": [
+    {
+      "id": "typescript",
+      "repos": ["express", "react", "webpack"]
+    },
+    {
+      "id": "python",
+      "repos": ["fastapi"]
+    }
+  ],
+  "mcp_examples": [
+    { "language": "typescript", "repo": "express", "tools": ["analyze_architecture", "check_cycles"] },
+    { "language": "python", "repo": "fastapi", "tools": ["analyze_architecture", "check_cycles"] }
+  ],
+  "openclaw_sample": "samples/openclaw/minimal-sample"
+}
